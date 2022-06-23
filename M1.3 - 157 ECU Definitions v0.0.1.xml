@@ -81,11 +81,48 @@ v0
 
 <!--Config Switches--> 
 	
-	<table type="BitwiseSwitch" name="O2 Sensor Adaption" category="Configurations">
-		<bit position ="2" name="O2 Sensor Adaption"/>
-		<description>This switch enables and disables o2 sensor adaptions</description>
+	
+	<table type="BitwiseSwitch" name="Fuel Type" category="Configurations">
+		<bit position ="7" name="Unleaded"/>
+		<description>Untick for leaded petrol</description>
+	</table>
+	
+	<table type="BitwiseSwitch" name="Fuel Quality" category="Configurations">
+		<bit position ="6" name="Regular"/>
+		<description>Untick for super</description>
 	</table>
 
+	<table type="BitwiseSwitch" name="O2 Sensor" category="Configurations">
+		<bit position ="5" name="No O2 sensor control"/>
+		<description>Tick to disable O2 control</description>
+	</table>
+
+	<table type="BitwiseSwitch" name="Transmission Type" category="Configurations">
+		<bit position ="1" name="Automatic"/>
+		<description>Untick for Manual Transmission</description>
+	</table>
+
+	<table type="BitwiseSwitch" name="Purge Valve" category="Configurations">
+		<bit position ="3" name="No Purge Valve"/>
+		<description>Tick to disable purge valve</description>
+	</table>
+	
+	<table type="BitwiseSwitch" name="EML" category="Configurations">
+		<bit position ="2" name="No EML"/>
+		<description>Untick to enable Engine Management Light</description>
+	</table>
+	
+	<table type="BitwiseSwitch" name="ASC+T" category="Configurations">
+		<bit position ="1" name="No ASC+T"/>
+		<description>Untick to enable ASC+T</description>
+	</table>
+	
+	<table type="BitwiseSwitch" name="Variant" category="Configurations">
+		<bit position ="0" name="Variant"/>
+		<description>Untick for Standard - unclear on this function.</description>
+	</table>
+	
+	
  
 <!--DTCs--> 
 
@@ -131,7 +168,7 @@ v0
 	</table>
 	
 	<table type="3D" name="Fuel Scalar - Part Throttle - Low Load 1" category="Fuel" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -142,7 +179,7 @@ v0
 	</table>
 	
 	<table type="3D" name="Fuel Scalar - Part Throttle - Low Load 2" category="Fuel" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -153,7 +190,7 @@ v0
 	</table>
 	
 	<table type="3D" name="Fuel Scalar - Part Throttle - Low Load 3" category="Fuel" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -164,7 +201,7 @@ v0
 	</table>
 	
 	<table type="3D" name="Fuel Scalar - Part Throttle - Low Load 4" category="Fuel" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -175,7 +212,7 @@ v0
 	</table>
 	
 	<table type="3D" name="Fuel Scalar - Part Throttle - Low Load 5" category="Fuel" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -186,7 +223,7 @@ v0
 	</table>
 	
 	<table type="3D" name="Fuel Scalar - Part Throttle - Low Load 6" category="Fuel" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -197,7 +234,7 @@ v0
 	</table>
 	
 	<table type="3D" name="Fuel Scalar - Part Throttle - High Load 1" category="Fuel" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -208,7 +245,7 @@ v0
 	</table>
 
 	<table type="3D" name="Fuel Scalar - Part Throttle - High Load 2" category="Fuel" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -219,7 +256,7 @@ v0
 	</table>
 		
 	<table type="3D" name="Fuel Scalar - Part Throttle - High Load 3" category="Fuel" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -230,7 +267,7 @@ v0
 	</table>
 
 	<table type="3D" name="Fuel Scalar - Part Throttle - High Load 4" category="Fuel" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -241,7 +278,7 @@ v0
 	</table>
 		
 	<table type="3D" name="Fuel Scalar - Part Throttle - High Load 5" category="Fuel" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -252,7 +289,7 @@ v0
 	</table>
 
 	<table type="3D" name="Fuel Scalar - Part Throttle - High Load 6" category="Fuel" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
@@ -263,7 +300,7 @@ v0
 	</table>
 	
 	<table type="2D" name="Fuel Scalar - WOT 1" category="Fuel" storagetype="uint8" endian="little" sizex="16" userlevel="1">
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
 			<table type="X Axis" name="Engine Speed" storagetype="uint8" endian="little">
 				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
 			</table>
@@ -271,7 +308,7 @@ v0
 	</table>
 	
 	<table type="2D" name="Fuel Scalar - WOT 2" category="Fuel" storagetype="uint8" endian="little" sizex="16" userlevel="1">
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
 			<table type="X Axis" name="Engine Speed" storagetype="uint8" endian="little">
 				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
 			</table>
@@ -279,7 +316,7 @@ v0
 	</table>
 			
 	<table type="2D" name="Fuel Scalar - WOT 3" category="Fuel" storagetype="uint8" endian="little" sizex="16" userlevel="1">
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
 			<table type="X Axis" name="Engine Speed" storagetype="uint8" endian="little">
 				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
 			</table>
@@ -287,7 +324,7 @@ v0
 	</table>
 	
 	<table type="2D" name="Fuel Scalar - WOT 4" category="Fuel" storagetype="uint8" endian="little" sizex="16" userlevel="1">
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
 			<table type="X Axis" name="Engine Speed" storagetype="uint8" endian="little">
 				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
 			</table>
@@ -295,12 +332,23 @@ v0
 	</table>
 		
 	<table type="2D" name="Fuel Scalar - WOT 5" category="Fuel" storagetype="uint8" endian="little" sizex="16" userlevel="1">
-		<scaling units="%" expression="(x*0.007813-1)*100" to_byte="(x/100+1)/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement="0.01" coarseincrement="0.1" />
 			<table type="X Axis" name="Engine Speed" storagetype="uint8" endian="little">
 				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
 			</table>
 		<description>This is the WOT fuel scalar for WOT. Increase the value to make richer, decrease to make leaner.</description>
 	</table>
+	
+	<table type="3D" name="Fuel - IAT Compensation" category="Fuel" storagetype="uint8" endian="little" sizex="5" sizey="10" userlevel="1" >
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".01" coarseincrement="0.1" />
+			<table type="X Axis" name="Intake Air Temp" storagetype="uint8" endian="little" logparam="E2" >
+				<scaling units="°C" expression="x*0.75-48" to_byte="(x+48)/0.75" format="0.00" fineincrement="1" coarseincrement="10" />
+			</table>
+			<table type="Y Axis" name="Engine Speed" storagetype="uint8" endian="little" logparam="P8">
+				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
+			</table>
+		<description>The is a modifier to the fuel scalar based on Intake Air Temp - necessary as the AFM measures flow, not mass.</description>
+	</table>	
 		
 
 <!--Timing-->
@@ -336,7 +384,7 @@ v0
 		<description>This is the WOT ignition timing map.</description>
 	</table>
 
-	<table type="3D" name="Ignition Timing - Part Throttle - Low Load 1" category="Ignition Timing" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
+	<table type="3D" name="Ignition Timing - Part Throttle - High Load 1" category="Ignition Timing" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
 		<scaling units="&deg;BTDC" expression="(x*.75)-22.5" to_byte="(x+22.5)/.75" format="0.00" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
@@ -347,7 +395,7 @@ v0
 		<description>This is the part throttle ignition timing map when in lower loads but not WOT.</description>
 	</table>
 	
-	<table type="3D" name="Ignition Timing - Part Throttle - Low Load 2" category="Ignition Timing" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
+	<table type="3D" name="Ignition Timing - Part Throttle - High Load 2" category="Ignition Timing" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
 		<scaling units="&deg;BTDC" expression="(x*.75)-22.5" to_byte="(x+22.5)/.75" format="0.00" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
@@ -358,7 +406,7 @@ v0
 		<description>This is the part throttle ignition timing map when in lower loads but not WOT.</description>
 	</table>
 	
-	<table type="3D" name="Ignition Timing - Part Throttle - High Load 1" category="Ignition Timing" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
+	<table type="3D" name="Ignition Timing - Part Throttle - Low Load 1" category="Ignition Timing" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
 		<scaling units="&deg;BTDC" expression="(x*.75)-22.5" to_byte="(x+22.5)/.75" format="0.00" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
@@ -369,7 +417,7 @@ v0
 		<description>This is the part throttle ignition timing map when in higher loads but not WOT.</description>
 	</table>
 	
-	<table type="3D" name="Ignition Timing - Part Throttle - High Load 2" category="Ignition Timing" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
+	<table type="3D" name="Ignition Timing - Part Throttle - Low Load 2" category="Ignition Timing" storagetype="uint8" endian="little" sizex="6" sizey="12" userlevel="1" >
 		<scaling units="&deg;BTDC" expression="(x*.75)-22.5" to_byte="(x+22.5)/.75" format="0.00" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
@@ -425,9 +473,49 @@ v0
 	</table>
 
 <!--Sensor Scaling-->
-	<table type="2D" name="AFM Scaling" category="Sensors Scaling" storagetype="uint8" endian="little" sizex="32"  userlevel="2" >
-	   <scaling units="kg/hr" expression="x*0.212" to_byte="x/.212"  format="0.00" fineincrement=".01" coarseincrement=".1" />
-			<table type="Static X Axis" name="0 to 5 Volts" sizex="32">
+
+	<table type="Switch" name="MAF Conversion" category="Sensors Scaling" sizey="48" userlevel="5">
+		<state name="MAF Conversion" data="01 41 5C A2 9E 94 88 78 FC FD FE FF 00 01 02 03 80 82 86 88 89 8D 90 93 96 99 9C 9F A2 A5 A9 AC AF B2 B6 B9 BD C0 C4 C8 CC D0 D4 D8 DC E1 E5 EA" />
+		<state name="Stock AFM" data="C2 AC 9A 89 F4 D9 C2 AC FC FD FE FF FF 00 01 02 81 84 86 88 8B 8D 90 93 95 98 9B 9E A0 A3 A6 A9 AC B0 B3 B6 B9 BD C0 C4 C7 CB CF D2 D6 DA DE E2" />
+			<description>Experimental - This will enable you to use a Bosch F00C2G2032 MAF (VAG 06A906461A) in a 65mm ID tube to replace the AFM. 
+***You will need to disable the fuel corrections based on air temperature by setting the table "Fuel - IAT Compensation" to all ONEs.***</description>
+	</table>
+
+	<table type="2D" name="AFM Transfer - Magnitude" category="Sensors Scaling" storagetype="uint8" endian="little" sizex="8"  userlevel="2" >
+	   <scaling units="-" expression="x" to_byte="x"  format="0.00" fineincrement=".01" coarseincrement=".1" />
+			<table type="Static X Axis" name="Decimal" sizex="8">
+				<data>1</data>
+				<data>2</data>
+				<data>3</data>
+				<data>4</data>
+				<data>5</data>
+				<data>6</data>
+				<data>7</data>
+				<data>8</data>
+			</table>
+		<description>This table is used in conjunction with AFM Transfer - Exponent and AFM Functiong - Curve to generate a 256 byte AFM transfer function.
+		Flow m^3/hr = "AFM Transfer - Magnitude" * (2^"AFM Transfer - Exponent") * "AFM Transfer - Curve"</description>
+	</table>
+	
+	<table type="2D" name="AFM Transfer - Exponent" category="Sensors Scaling" storagetype="int8" endian="little" sizex="8"  userlevel="2" >
+	   <scaling units="-" expression="x" to_byte="x"  format="0.00" fineincrement=".01" coarseincrement=".1" />
+			<table type="Static X Axis" name="Decimal" sizex="8">
+				<data>1</data>
+				<data>2</data>
+				<data>3</data>
+				<data>4</data>
+				<data>5</data>
+				<data>6</data>
+				<data>7</data>
+				<data>8</data>
+			</table>
+		<description>This table is used in conjunction with AFM Transfer - Exponent and AFM Functiong - Curve to generate a 256 byte AFM transfer function.
+		Flow m^3/hr = "AFM Transfer - Magnitude" * (2^"AFM Transfer - Exponent") * "AFM Transfer - Curve"</description>
+	</table>
+
+	<table type="2D" name="AFM Transfer - Curve" category="Sensors Scaling" storagetype="uint8" endian="little" sizex="32"  userlevel="2" >
+	   <scaling units="-" expression="x" to_byte="x"  format="0.00" fineincrement=".01" coarseincrement=".1" />
+			<table type="Static X Axis" name="Decimal" sizex="32">
 				<data>0.00</data>
 				<data>0.02</data>
 				<data>0.04</data>
@@ -461,13 +549,14 @@ v0
 				<data>4.40</data>
 				<data>4.70</data>
 			</table>
-		<description>This is the scaling for the AFM Sensor</description>
+		<description>This table is used in conjunction with AFM Transfer - Exponent and AFM Functiong - Curve to generate a 256 byte AFM transfer function.
+		Flow m^3/hr = "AFM Transfer - Magnitude" * (2^"AFM Transfer - Exponent") * "AFM Transfer - Curve"</description>
 	</table>
 	
 	<table type="2D" name="ECT Sensor Scaling" category="Sensors Scaling" storagetype="uint8" endian="little" sizex="12" userlevel="1">
 		<scaling name="Metric" units="°C" expression="x*.75-48" to_byte="(x+48)/.75" format="0.00" fineincrement="2" coarseincrement="10"/>
 			<table type="Y Axis" name="Voltage" storagetype="uint8" endian="little">
-				<scaling units="Volts" expression="x*0.019608" to_byte="x/0.019608" format="0.00" fineincrement=".01" coarseincrement=".1"/>
+				<scaling units="Volts" expression="x*0.01953" to_byte="x/0.01953" format="0.00" fineincrement=".01" coarseincrement=".1"/>
 			</table>
 		<description>This is the scaling for the Engine Coolant Temperature sensor.</description>
     </table>
@@ -496,7 +585,22 @@ v0
 
 <!--Switches-->
 
-	<table name="O2 Sensor Adaption" addressbit="2" storageaddress="0xD00B"/>
+	
+	<table name="Fuel Type" addressbit="7" storageaddress="0x1F56"/>
+	
+	<table name="Fuel Quality" addressbit="6" storageaddress="0x1F56"/>
+	
+	<table name="O2 Sensor" addressbit="5" storageaddress="0x1F56"/>
+	
+	<table name="Transmission Type" addressbit="1" storageaddress="0x1F56"/>	
+	
+	<table name="Purge Valve" addressbit="3" storageaddress="0x1F57"/>
+
+	<table name="EML" addressbit="2" storageaddress="0x1F57"/>
+
+	<table name="ASC+T" addressbit="1" storageaddress="0x1F57"/>
+
+	<table name="Variant" addressbit="0" storageaddress="0x1F57"/>
 	
 
 <!--Fuel-->
@@ -588,6 +692,12 @@ v0
 	<table name="Fuel Scalar - WOT 5" storageaddress="0x4B90">
 		<table type="X Axis" storageaddress="0x4B80" dataLayout="bosch_subtract"/>
 	</table>
+
+	<table name="Fuel - IAT Compensation" storageaddress="0x4A8C">
+		<table type="X Axis" storageaddress="0x4A87" dataLayout="bosch_subtract"/>
+		<table type="Y Axis" storageaddress="0x4A7B" dataLayout="bosch_subtract"/>
+	</table>	
+	
 	
 	
 <!--Ignition-->	
@@ -600,15 +710,25 @@ v0
 		<table type="X Axis" storageaddress="0xDCFD" dataLayout="bosch_subtract"/>
 	</table>
 
-	<table name="Ignition Timing - Part Throttle - Low Load 1" storageaddress="0x5500">
+	<table name="Ignition Timing - Part Throttle - High Load 1" storageaddress="0x5500">
 		<table type="X Axis" storageaddress="0x54F9" dataLayout="bosch_subtract"/>
 		<table type="Y Axis" storageaddress="0x54EB" dataLayout="bosch_subtract"/>
 	</table>
 	
-	<table name="Ignition Timing - Part Throttle - High Load 1" storageaddress="0x556A">
+	<table name="Ignition Timing - Part Throttle - Low Load 1" storageaddress="0x556A">
 		<table type="X Axis" storageaddress="0x5564" dataLayout="bosch_subtract"/>
 		<table type="Y Axis" storageaddress="0x5556" dataLayout="bosch_subtract"/>
-	</table>	
+	</table>
+
+	<table name="Ignition Timing - Part Throttle - High Load 2" storageaddress="0x55C9">
+		<table type="X Axis" storageaddress="0x54C0" dataLayout="bosch_subtract"/>
+		<table type="Y Axis" storageaddress="0x55B4" dataLayout="bosch_subtract"/>
+	</table>
+	
+	<table name="Ignition Timing - Part Throttle - Low Load 2" storageaddress="0x5633">
+		<table type="X Axis" storageaddress="0x562D" dataLayout="bosch_subtract"/>
+		<table type="Y Axis" storageaddress="0x561F" dataLayout="bosch_subtract"/>
+	</table>		
 	
 	<table name="Ignition Timing - WOT 1" storageaddress="0x55A7">
 		<table type="X Axis" storageaddress="0x5598" dataLayout="bosch_subtract"/>
@@ -623,13 +743,19 @@ v0
 
 
 <!--Sensor Scaling-->
-	<table name="AFM Scaling" storageaddress="0x4A40" />
+
+	<table name="AFM Transfer - Magnitude" storageaddress="0x4700" />
 	
-	<table name="ECT Sensor Scaling" storageaddress="0x4C14">
-		<table type="X Axis" storageaddress="0x4C08" dataLayout="bosch_subtract"/>
+	<table name="AFM Transfer - Exponent" storageaddress="0x4708" />
+	
+	<table name="AFM Transfer - Curve" storageaddress="0x4710" />
+	
+	<table name="ECT Sensor Scaling" storageaddress="0x4858">
+		<table type="X Axis" storageaddress="0x484B" dataLayout="bosch_subtract"/>
 	</table>
 
-	
+<!--Checksum-->
+	<checksum type="MOTRONICDOUBLE" start="0x0" initial="0xB51F" end="0x1EFF" startSecond="0x2000" endSecond="0x7FFF" loc="0x1F00" />	
    </rom>
    
 <rom base="BMWM1.3BASE">
@@ -638,7 +764,7 @@ v0
      This will typically be the storageaddress and sometimes the size entries. -->
     <romid>
       <internalidaddress>1F0C</internalidaddress>
-      <internalidstring>BTS</internalidstring>
+      <internalidstring>BTS165</internalidstring>
       <xmlid>M1.3 157 (BTS)</xmlid>
       <ecuid>0261200157</ecuid>
       <year>1987-1991</year>
@@ -653,7 +779,21 @@ v0
 
 <!--Switches-->
 
+	<table name="Fuel Type" addressbit="7" storageaddress="0x1F56"/>
 	
+	<table name="Fuel Quality" addressbit="6" storageaddress="0x1F56"/>
+	
+	<table name="O2 Sensor" addressbit="5" storageaddress="0x1F56"/>
+	
+	<table name="Transmission Type" addressbit="1" storageaddress="0x1F56"/>	
+	
+	<table name="Purge Valve" addressbit="3" storageaddress="0x1F57"/>
+
+	<table name="EML" addressbit="2" storageaddress="0x1F57"/>
+
+	<table name="ASC+T" addressbit="1" storageaddress="0x1F57"/>
+
+	<table name="Variant" addressbit="0" storageaddress="0x1F57"/>
 
 <!--Fuel-->
 	<table name="Injector Dead Time" storageaddress="0x4894">
@@ -672,6 +812,11 @@ v0
 	
 	<table name="Fuel Scalar - WOT" storageaddress="0x49CE">
 		<table type="X Axis" storageaddress="0x49BE" dataLayout="bosch_subtract"/>
+	</table>
+	
+	<table name="Fuel - IAT Compensation" storageaddress="0x4A8C">
+		<table type="X Axis" storageaddress="0x4A87" dataLayout="bosch_subtract"/>
+		<table type="Y Axis" storageaddress="0x4A7B" dataLayout="bosch_subtract"/>
 	</table>
 	
 	
@@ -707,7 +852,14 @@ v0
 
 
 <!--Sensor Scaling-->
-	<table name="AFM Scaling" storageaddress="0x4710" />
+
+	<table name="MAF Conversion" storageaddress="0x4700" />
+
+	<table name="AFM Transfer - Magnitude" storageaddress="0x4700" />
+	
+	<table name="AFM Transfer - Exponent" storageaddress="0x4708" />
+		
+	<table name="AFM Transfer - Curve" storageaddress="0x4710" />
 	
 	<table name="ECT Sensor Scaling" storageaddress="0x4858">
 		<table type="X Axis" storageaddress="0x484B" dataLayout="bosch_subtract"/>
