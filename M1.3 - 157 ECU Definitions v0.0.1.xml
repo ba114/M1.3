@@ -60,7 +60,7 @@
 <roms>
   <rom>
     <!--
-v0
+v0.01
 	- draft of Bosch M1.3
 
 	In this BASE section define all the common table data and axis attributes.
