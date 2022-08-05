@@ -75,7 +75,7 @@ v0.01
    <market>EURO</market>
    <make>BMW</make>
    <model>E30</model>
-   <submodel>325i</submodel>
+   <submodel>318i</submodel>
    <transmission>MT/AT</transmission>
   </romid>
 
@@ -474,13 +474,6 @@ v0.01
 
 <!--Sensor Scaling-->
 
-	<table type="Switch" name="MAF Conversion" category="Sensors Scaling" sizey="48" userlevel="5">
-		<state name="MAF Conversion" data="01 41 5C A2 9E 94 88 78 FC FD FE FF 00 01 02 03 80 82 86 88 89 8D 90 93 96 99 9C 9F A2 A5 A9 AC AF B2 B6 B9 BD C0 C4 C8 CC D0 D4 D8 DC E1 E5 EA" />
-		<state name="Stock AFM" data="C2 AC 9A 89 F4 D9 C2 AC FC FD FE FF FF 00 01 02 81 84 86 88 8B 8D 90 93 95 98 9B 9E A0 A3 A6 A9 AC B0 B3 B6 B9 BD C0 C4 C7 CB CF D2 D6 DA DE E2" />
-			<description>Experimental - This will enable you to use a Bosch F00C2G2032 MAF (VAG 06A906461A) in a 65mm ID tube to replace the AFM. 
-***You will need to disable the fuel corrections based on air temperature by setting the table "Fuel - IAT Compensation" to all ONEs.***</description>
-	</table>
-
 	<table type="2D" name="AFM Transfer - Magnitude" category="Sensors Scaling" storagetype="uint8" endian="little" sizex="8"  userlevel="2" >
 	   <scaling units="-" expression="x" to_byte="x"  format="0.00" fineincrement=".01" coarseincrement=".1" />
 			<table type="Static X Axis" name="Decimal" sizex="8">
@@ -699,7 +692,6 @@ v0.01
 	</table>	
 	
 	
-	
 <!--Ignition-->	
 
 	<table name="Ignition advance idle speed - MT/AT in P/N" storageaddress="0xDCF3">
@@ -758,117 +750,5 @@ v0.01
 	<checksum type="MOTRONICDOUBLE" start="0x0" initial="0xB51F" end="0x1EFF" startSecond="0x2000" endSecond="0x7FFF" loc="0x1F00" />	
    </rom>
    
-<rom base="BMWM1.3BASE">
-    <!-- In this ROM specific section define only the attributes missing or that need
-     to be changed compared to the common table data and axis attributes in the BASE.
-     This will typically be the storageaddress and sometimes the size entries. -->
-    <romid>
-      <internalidaddress>1F0C</internalidaddress>
-      <internalidstring>BTS165</internalidstring>
-      <xmlid>M1.3 157 (BTS)</xmlid>
-      <ecuid>0261200157</ecuid>
-      <year>1987-1991</year>
-      <market>EURO</market>
-      <make>BMW</make>
-      <model>E30</model>
-      <submodel>318i</submodel>
-      <transmission>MT/AT</transmission>
-      <memmodel></memmodel>
-      <filesize>32kb</filesize>
-    </romid>
-
-<!--Switches-->
-
-	<table name="Fuel Type" addressbit="7" storageaddress="0x1F56"/>
-	
-	<table name="Fuel Quality" addressbit="6" storageaddress="0x1F56"/>
-	
-	<table name="O2 Sensor" addressbit="5" storageaddress="0x1F56"/>
-	
-	<table name="Transmission Type" addressbit="1" storageaddress="0x1F56"/>	
-	
-	<table name="Purge Valve" addressbit="3" storageaddress="0x1F57"/>
-
-	<table name="EML" addressbit="2" storageaddress="0x1F57"/>
-
-	<table name="ASC+T" addressbit="1" storageaddress="0x1F57"/>
-
-	<table name="Variant" addressbit="0" storageaddress="0x1F57"/>
-
-<!--Fuel-->
-	<table name="Injector Dead Time" storageaddress="0x4894">
-		<table type="X Axis" storageaddress="0x4890" dataLayout="bosch_subtract"/>
-	</table>
-	
-	<table name="Fuel Scalar - Idle" storageaddress="0xD970">
-		<table type="X Axis" storageaddress="0xD96D" dataLayout="bosch_subtract"/>
-		<table type="Y Axis" storageaddress="0xD965" dataLayout="bosch_subtract"/>
-	</table>
-	
-	<table name="Fuel Scalar - Part Throttle" storageaddress="0x4BC4">
-		<table type="X Axis" storageaddress="0x4BB4" dataLayout="bosch_subtract"/>
-		<table type="Y Axis" storageaddress="0x4BA2" dataLayout="bosch_subtract"/>
-	</table>
-	
-	<table name="Fuel Scalar - WOT" storageaddress="0x49CE">
-		<table type="X Axis" storageaddress="0x49BE" dataLayout="bosch_subtract"/>
-	</table>
-	
-	<table name="Fuel - IAT Compensation" storageaddress="0x4A8C">
-		<table type="X Axis" storageaddress="0x4A87" dataLayout="bosch_subtract"/>
-		<table type="Y Axis" storageaddress="0x4A7B" dataLayout="bosch_subtract"/>
-	</table>
-	
-	
-<!--Ignition-->	
-
-	<table name="Ignition Timing - Idle" storageaddress="0x5411">
-		<table type="X Axis" storageaddress="0x540E" dataLayout="bosch_subtract"/>
-		<table type="Y Axis" storageaddress="0x5404" dataLayout="bosch_subtract"/>
-	</table>
-
-	<table name="Ignition Timing - Part Throttle" storageaddress="0x550D">
-		<table type="X Axis" storageaddress="0x54FD" dataLayout="bosch_subtract"/>
-		<table type="Y Axis" storageaddress="0x54EB" dataLayout="bosch_subtract"/>
-	</table>
-		
-	<table name="Ignition Timing - WOT" storageaddress="0x5299">
-		<table type="X Axis" storageaddress="0x5289" dataLayout="bosch_subtract"/>
-	</table>
-		
-	
-<!--Idle Speed Target-->
-	<table name="Idle Speed" storageaddress="0xE4AA">
-		<table type="X Axis" storageaddress="0xE4A6" dataLayout="bosch_subtract"/>
-	</table>
-	
-<!--Limiters-->
-	<table name="Rev limiter 1" storageaddress="0x4225" />
-	
-	<table name="Rev limiter 2" storageaddress="0x4252" />
-		
-	<table name="Rev limiter 3" storageaddress="0x427E" />
-
-
-
-<!--Sensor Scaling-->
-
-	<table name="MAF Conversion" storageaddress="0x4700" />
-
-	<table name="AFM Transfer - Magnitude" storageaddress="0x4700" />
-	
-	<table name="AFM Transfer - Exponent" storageaddress="0x4708" />
-		
-	<table name="AFM Transfer - Curve" storageaddress="0x4710" />
-	
-	<table name="ECT Sensor Scaling" storageaddress="0x4858">
-		<table type="X Axis" storageaddress="0x484B" dataLayout="bosch_subtract"/>
-	</table>
-	
-<!--Checksum-->
-	<checksum type="MOTRONICDOUBLE" start="0x0" initial="0xB51F" end="0x1EFF" startSecond="0x2000" endSecond="0x7FFF" loc="0x1F00" />
-
-	
-   </rom>
    
 </roms>
