@@ -486,7 +486,7 @@ v0.0.1
 	</table>
 	
 	<table type="2D" name="ECT Sensor Scaling" category="Sensors Scaling" storagetype="uint8" endian="little" sizex="12" userlevel="1">
-		<scaling name="Metric" units="°C" expression="x*.75-48" to_byte="(x+48)/.75" format="0.00" fineincrement="2" coarseincrement="10"/>
+		<scaling units="°C" expression="x*.75-48" to_byte="(x+48)/.75" format="0.00" fineincrement="2" coarseincrement="10"/>
 			<table type="Y Axis" name="Voltage" storagetype="uint8" endian="little">
 				<scaling units="Volts" expression="x*0.019608" to_byte="x/0.019608" format="0.00" fineincrement=".01" coarseincrement=".1"/>
 			</table>
