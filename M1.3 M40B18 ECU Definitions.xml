@@ -137,7 +137,18 @@ v0.01
 		<description>Injector Dead Time settings</description>
 	</table>
 	
-	<table type="3D" name="Fuel Scalar - Idle" category="Fuel" storagetype="uint8" endian="little" sizex="3" sizey="6" userlevel="1" >
+	<table type="3D" name="Fuel Scalar - Idle" category="Fuel" storagetype="uint8" endian="little" sizex="3" sizey="4" userlevel="1" >
+		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
+			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
+				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
+			</table>
+			<table type="Y Axis" name="Engine Speed" storagetype="uint8" endian="little" logparam="P8">
+				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
+			</table>
+		<description>This is the part load fuel scalar when vanos is on (advanced). Increase the value to make richer, decrease to make leaner.</description>
+	</table>
+	
+	<table type="3D" name="Fuel Scalar - Idle 2" category="Fuel" storagetype="uint8" endian="little" sizex="3" sizey="4" userlevel="1" >
 		<scaling units="%" expression="x*0.007813" to_byte="x/0.007813" format="0.000" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Load" storagetype="uint8" endian="little" logparam="E2" >
 				<scaling units="ms" expression="x*.05" to_byte="x/.05" format="0.00" fineincrement="1" coarseincrement="10" />
@@ -438,7 +449,7 @@ v0.01
 	
 
 <!--Idle Speed Target-->
-    <table type="2D" name="Idle Speed" category="Idle Speed Target" storagetype="uint8" endian="little" sizex="4" userlevel="1">
+    <table type="2D" name="Idle speed - MT/AT in P/N" category="Idle Speed Target" storagetype="uint8" endian="little" sizex="4" userlevel="1">
 		<scaling units="RPM" expression="x*10" to_byte="x/10" format="0" fineincrement="10" coarseincrement="100"/>
 			<table type="X Axis" name="Coolant Temp" storagetype="uint8" endian="little" logparam="P2">
 				<scaling units="°C" expression="x*.75-48" to_byte="(x+48)/.75" format="0.0" fineincrement="2" coarseincrement="10"/>
@@ -446,9 +457,25 @@ v0.01
 		<description>Engine idle speed with no additional load.</description>
     </table>
 	
+    <table type="2D" name="Idle speed - AT in D/R" category="Idle Speed Target" storagetype="uint8" endian="little" sizex="4" userlevel="1">
+		<scaling units="RPM" expression="x*10" to_byte="x/10" format="0" fineincrement="10" coarseincrement="100"/>
+			<table type="X Axis" name="Coolant Temp" storagetype="uint8" endian="little" logparam="P2">
+				<scaling units="°C" expression="x*.75-48" to_byte="(x+48)/.75" format="0.0" fineincrement="2" coarseincrement="10"/>
+			</table>
+		<description>Engine idle speed with no additional load.</description>
+    </table>
+	
+    <table type="2D" name="Idle Speed - AT in D/R - AC On" category="Idle Speed Target" storagetype="uint8" endian="little" sizex="4" userlevel="1">
+		<scaling units="RPM" expression="x*10" to_byte="x/10" format="0" fineincrement="10" coarseincrement="100"/>
+			<table type="X Axis" name="Coolant Temp" storagetype="uint8" endian="little" logparam="P2">
+				<scaling units="°C" expression="x*.75-48" to_byte="(x+48)/.75" format="0.0" fineincrement="2" coarseincrement="10"/>
+			</table>
+		<description>Engine idle speed with AC on.</description>
+    </table>
+	
 
 <!--Limiters-->
-	<table type="2D" name="Rev limiter 1" category="Limiters" storagetype="uint8" endian="little" sizey="1" userlevel="1">
+	<table type="2D" name="Rev Limiter" category="Limiters" storagetype="uint8" endian="little" sizey="1" userlevel="1">
 		<scaling units="RPM" expression="912500/x" format="0" fineincrement="50" coarseincrement="100" />
 			<table type="Static Y Axis" name="RPM" sizey="1">
 				<data>RPM Limit</data>
@@ -456,21 +483,6 @@ v0.01
 		<description>Rev Limiter</description>
 	</table>
 
-	<table type="2D" name="Rev limiter 2" category="Limiters" storagetype="uint8" endian="little" sizey="1" userlevel="1">
-		<scaling units="RPM" expression="912500/x" format="0" fineincrement="50" coarseincrement="100" />
-			<table type="Static Y Axis" name="RPM" sizey="1">
-				<data>RPM Limit</data>
-			</table>
-		<description>Rev Limiter</description>
-	</table>
-	
-	<table type="2D" name="Rev limiter 3" category="Limiters" storagetype="uint8" endian="little" sizey="1" userlevel="1">
-		<scaling units="RPM" expression="912500/x" format="0" fineincrement="50" coarseincrement="100" />
-			<table type="Static Y Axis" name="RPM" sizey="1">
-				<data>RPM Limit</data>
-			</table>
-		<description>Rev Limiter</description>
-	</table>
 
 <!--Sensor Scaling-->
 
@@ -601,9 +613,14 @@ v0.01
 		<table type="X Axis" storageaddress="0x4890" dataLayout="bosch_subtract"/>
 	</table>
 	
-	<table name="Fuel Scalar - Idle" storageaddress="0xD970">
-		<table type="X Axis" storageaddress="0xD96D" dataLayout="bosch_subtract"/>
-		<table type="Y Axis" storageaddress="0xD965" dataLayout="bosch_subtract"/>
+	<table name="Fuel Scalar - Idle" storageaddress="0x49B0">
+		<table type="X Axis" storageaddress="0x49A7" dataLayout="bosch_subtract"/>
+		<table type="Y Axis" storageaddress="0x49AD" dataLayout="bosch_subtract"/>
+	</table>
+	
+	<table name="Fuel Scalar - Idle 2" storageaddress="0x4B0C">
+		<table type="X Axis" storageaddress="0x4B09" dataLayout="bosch_subtract"/>
+		<table type="Y Axis" storageaddress="0x4B03" dataLayout="bosch_subtract"/>
 	</table>
 	
 	<table name="Fuel Scalar - Part Throttle - Low Load 1" storageaddress="0x4C21">
@@ -729,9 +746,27 @@ v0.01
 
 	
 <!--Idle Speed Target-->
-	<table name="Idle Speed" storageaddress="0xE4AA">
-		<table type="X Axis" storageaddress="0xE4A6" dataLayout="bosch_subtract"/>
+	
+	<table name="Idle speed - MT/AT in P/N" storageaddress="0x59F4">
+		<table type="X Axis" storageaddress="0x59F0" dataLayout="bosch_subtract"/>
 	</table>
+	
+	<table name="Idle speed - AT in D/R" storageaddress="0x59FE">
+		<table type="X Axis" storageaddress="0x59FA" dataLayout="bosch_subtract"/>
+	</table>
+	
+	<table name="Idle Speed - AT in D/R - AC On" storageaddress="0x5A08">
+		<table type="X Axis" storageaddress="0x5A04" dataLayout="bosch_subtract"/>
+	</table>
+	
+	
+<!--Limiters-->
+	<table name="Rev Limiter" storageaddress="0x4225" />
+	
+	<!--update all limiters to match Rev Limiter-->
+		<checksum type="bytexor" xorloc="0x4252" start="0x4225" end="0x4226" />
+		<checksum type="bytexor" xorloc="0x427E" start="0x4225" end="0x4226" />
+
 
 
 <!--Sensor Scaling-->
