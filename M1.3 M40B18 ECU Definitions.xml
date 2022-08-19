@@ -145,7 +145,7 @@ v0.01
 			<table type="Y Axis" name="Engine Speed" storagetype="uint8" endian="little" logparam="P8">
 				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
 			</table>
-		<description>This is the part load fuel scalar when vanos is on (advanced). Increase the value to make richer, decrease to make leaner.</description>
+		<description>This is the part load fuel scalar. Increase the value to make richer, decrease to make leaner.</description>
 	</table>
 	
 	<table type="3D" name="Fuel Scalar - Idle 2" category="Fuel" storagetype="uint8" endian="little" sizex="3" sizey="4" userlevel="1" >
@@ -156,7 +156,7 @@ v0.01
 			<table type="Y Axis" name="Engine Speed" storagetype="uint8" endian="little" logparam="P8">
 				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
 			</table>
-		<description>This is the part load fuel scalar when vanos is on (advanced). Increase the value to make richer, decrease to make leaner.</description>
+		<description>This is the part load fuel scalar. Increase the value to make richer, decrease to make leaner.</description>
 	</table>
 	
 	<table type="3D" name="Fuel Scalar - Part Throttle" category="Fuel" storagetype="uint8" endian="little" sizex="16" sizey="16" userlevel="1" >
@@ -631,8 +631,8 @@ v0.01
 	</table>
 	
 	<table name="Fuel Scalar - Idle" storageaddress="0x49B0">
-		<table type="X Axis" storageaddress="0x49A7" dataLayout="bosch_subtract"/>
-		<table type="Y Axis" storageaddress="0x49AD" dataLayout="bosch_subtract"/>
+		<table type="X Axis" storageaddress="0x49AD" dataLayout="bosch_subtract"/>
+		<table type="Y Axis" storageaddress="0x49A7" dataLayout="bosch_subtract"/>
 	</table>
 	
 	<table name="Fuel Scalar - Idle 2" storageaddress="0x4B0C">
