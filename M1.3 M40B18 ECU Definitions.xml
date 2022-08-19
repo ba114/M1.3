@@ -473,6 +473,23 @@ v0.01
 		<description>Engine idle speed with AC on.</description>
     </table>
 	
+<!--Deceleration-->
+    <table type="2D" name="Fuel Restore - RPM (AC On)" category="Deceleration" storagetype="uint8" endian="little" sizex="4" userlevel="1">
+		<scaling units="RPM" expression="x*40" to_byte="x/40" format="0" fineincrement="40" coarseincrement="400"/>
+			<table type="X Axis" name="Coolant Temp" storagetype="uint8" endian="little" logparam="P2">
+				<scaling units="°C" expression="x*.75-48" to_byte="(x+48)/.75" format="0.0" fineincrement="2" coarseincrement="10"/>
+			</table>
+		<description>Below this Engine Speed, fuel injectors are always turned on. To disable fuel cut during deceleration with the Throttle closed, increase this table as high as you want.</description>
+    </table>
+	
+    <table type="2D" name="Fuel Restore - RPM" category="Deceleration" storagetype="uint8" endian="little" sizex="4" userlevel="1">
+		<scaling units="RPM" expression="x*40" to_byte="x/40" format="0" fineincrement="40" coarseincrement="400"/>
+			<table type="X Axis" name="Coolant Temp" storagetype="uint8" endian="little" logparam="P2">
+				<scaling units="°C" expression="x*.75-48" to_byte="(x+48)/.75" format="0.0" fineincrement="2" coarseincrement="10"/>
+			</table>
+		<description>Below this Engine Speed, fuel injectors are always turned on. To disable fuel cut during deceleration with the Throttle closed, increase this table as high as you want.</description>
+    </table>
+	
 
 <!--Limiters-->
 	<table type="2D" name="Rev Limiter" category="Limiters" storagetype="uint8" endian="little" sizey="1" userlevel="1">
@@ -759,6 +776,17 @@ v0.01
 		<table type="X Axis" storageaddress="0x5A04" dataLayout="bosch_subtract"/>
 	</table>
 	
+<!--Deceleration-->	
+
+
+	<table name="Fuel Restore - RPM (AC On)" storageaddress="0x5216">
+		<table type="X Axis" storageaddress="0x5212" dataLayout="bosch_subtract"/>
+	</table>
+	
+	<table name="Fuel Restore - RPM" storageaddress="0x51EE">
+		<table type="X Axis" storageaddress="0x51EA" dataLayout="bosch_subtract"/>
+	</table>	
+
 	
 <!--Limiters-->
 	<table name="Rev Limiter" storageaddress="0x4225" />
