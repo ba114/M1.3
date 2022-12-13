@@ -516,6 +516,21 @@ v0.01
 		<description>Rev Limiter</description>
 	</table>
 
+	<table type="2D" name="Rev Limiter 2" category="Limiters" storagetype="uint8" endian="little" sizey="1" userlevel="1">
+		<scaling units="RPM" expression="912500/x" format="0" fineincrement="50" coarseincrement="100" />
+			<table type="Static Y Axis" name="RPM" sizey="1">
+				<data>RPM Limit</data>
+			</table>
+		<description>Rev Limiter</description>
+	</table>
+	
+	<table type="2D" name="Rev Limiter 3" category="Limiters" storagetype="uint8" endian="little" sizey="1" userlevel="1">
+		<scaling units="RPM" expression="912500/x" format="0" fineincrement="50" coarseincrement="100" />
+			<table type="Static Y Axis" name="RPM" sizey="1">
+				<data>RPM Limit</data>
+			</table>
+		<description>Rev Limiter</description>
+	</table>
 
 <!--Sensor Scaling-->
 
@@ -639,6 +654,12 @@ v0.01
 	<table name="ASC+T" addressbit="1" storageaddress="0x1F57"/>
 
 	<table name="Variant" addressbit="0" storageaddress="0x1F57"/>
+	
+		<!--update all variant codes to match-->
+		<checksum type="bytexor" xorloc="0x1F54" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F55" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F58" start="0x1F57" end="0x1F58" />
+		<checksum type="bytexor" xorloc="0x1F59" start="0x1F57" end="0x1F58" />
 	
 
 <!--Fuel-->
@@ -815,7 +836,12 @@ v0.01
 <!--Limiters-->
 	<table name="Rev Limiter" storageaddress="0x4225" />
 	
+	<table name="Rev Limiter 2" storageaddress="0x4252" />
+	
+	<table name="Rev Limiter 3" storageaddress="0x427E" />
+	
 	<!--update all limiters to match Rev Limiter-->
+
 		<checksum type="bytexor" xorloc="0x4252" start="0x4225" end="0x4226" />
 		<checksum type="bytexor" xorloc="0x427E" start="0x4225" end="0x4226" />
 

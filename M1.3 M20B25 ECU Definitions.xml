@@ -561,6 +561,12 @@ v0.0.1
 
 	<table name="Variant" addressbit="0" storageaddress="0x1F57"/>
 	
+		<!--update all variant codes to match-->
+		<checksum type="bytexor" xorloc="0x1F54" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F55" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F58" start="0x1F57" end="0x1F58" />
+		<checksum type="bytexor" xorloc="0x1F59" start="0x1F57" end="0x1F58" />
+	
 
 <!--Fuel-->
 	<table name="Injector Dead Time" storageaddress="0x4C69">
@@ -743,6 +749,12 @@ v0.0.1
 
 	<table name="Variant" addressbit="0" storageaddress="0x1F57"/>
 	
+		<!--update all variant codes to match-->
+		<checksum type="bytexor" xorloc="0x1F54" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F55" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F58" start="0x1F57" end="0x1F58" />
+		<checksum type="bytexor" xorloc="0x1F59" start="0x1F57" end="0x1F58" />
+	
 
 <!--Fuel-->
 	<table name="Injector Dead Time" storageaddress="0x4C69">
@@ -864,6 +876,12 @@ v0.0.1
 	<table name="ASC+T" addressbit="1" storageaddress="0x1F57"/>
 
 	<table name="Variant" addressbit="0" storageaddress="0x1F57"/>
+	
+		<!--update all variant codes to match-->
+		<checksum type="bytexor" xorloc="0x1F54" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F55" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F58" start="0x1F57" end="0x1F58" />
+		<checksum type="bytexor" xorloc="0x1F59" start="0x1F57" end="0x1F58" />
 	
 
 <!--Fuel-->

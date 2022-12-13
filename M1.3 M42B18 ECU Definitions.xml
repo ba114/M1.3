@@ -512,7 +512,7 @@ v0.0.1
 	<table type="3D" name="Ignition Timing - Coil Dwell" category="Ignition Timing" storagetype="uint8" endian="little" sizex="7" sizey="12" userlevel="1" >
 		<scaling units="-" expression="x*1" to_byte="x/1" format="0.00" fineincrement=".1" coarseincrement="1" />
 			<table type="X Axis" name="Voltage" storagetype="uint8" endian="little" >
-				<scaling units="ms" expression="x*0.0681" to_byte="x/0.0681" format="0.00" fineincrement="1" coarseincrement="10" />
+				<scaling units="V" expression="x*0.0681" to_byte="x/0.0681" format="0.00" fineincrement="1" coarseincrement="10" />
 			</table>
 			<table type="Y Axis" name="Engine Speed" storagetype="uint8" endian="little" logparam="P8">
 				<scaling units="RPM" expression="x*40" to_byte="x/40" format="#" fineincrement="50" coarseincrement="100" />
@@ -709,21 +709,27 @@ And different direction: primary_ms = DWELL_TABLE_VALUE * 125 / RPM.</descriptio
 
 <!--Switches-->
 
-	<table name="Fuel Type" addressbit="7" storageaddress="0x1F4A"/>
+	<table name="Fuel Type" addressbit="7" storageaddress="0x1F56"/>
 	
-	<table name="Fuel Quality" addressbit="6" storageaddress="0x1F4A"/>
+	<table name="Fuel Quality" addressbit="6" storageaddress="0x1F56"/>
 	
-	<table name="O2 Sensor" addressbit="5" storageaddress="0x1F4A"/>
+	<table name="O2 Sensor" addressbit="5" storageaddress="0x1F56"/>
 	
-	<table name="Transmission Type" addressbit="1" storageaddress="0x1F4A"/>	
+	<table name="Transmission Type" addressbit="1" storageaddress="0x1F56"/>	
 	
-	<table name="Purge Valve" addressbit="3" storageaddress="0x1F4B"/>
+	<table name="Purge Valve" addressbit="3" storageaddress="0x1F57"/>
 
-	<table name="EML" addressbit="2" storageaddress="0x1F4B"/>
+	<table name="EML" addressbit="2" storageaddress="0x1F57"/>
 
-	<table name="ASC+T" addressbit="1" storageaddress="0x1F4B"/>
+	<table name="ASC+T" addressbit="1" storageaddress="0x1F57"/>
 
-	<table name="Variant" addressbit="0" storageaddress="0x1F4B"/>
+	<table name="Variant" addressbit="0" storageaddress="0x1F57"/>
+	
+		<!--update all variant codes to match-->
+		<checksum type="bytexor" xorloc="0x1F54" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F55" start="0x1F56" end="0x1F57" />
+		<checksum type="bytexor" xorloc="0x1F58" start="0x1F57" end="0x1F58" />
+		<checksum type="bytexor" xorloc="0x1F59" start="0x1F57" end="0x1F58" />
 	
 
 <!--Fuel-->
